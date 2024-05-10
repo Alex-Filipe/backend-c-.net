@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth", "Auth.csproj", "{6625AA1B-E14C-46AC-B659-BD4BC9916EA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTests", "..\AuthTests\AuthTests.csproj", "{916C2DA0-7948-4595-BC12-A3C1330A2E88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthTests", "..\AuthTests\AuthTests.csproj", "{3510CC06-C50E-4C9B-BCAB-8F774CFC8B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6625AA1B-E14C-46AC-B659-BD4BC9916EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6625AA1B-E14C-46AC-B659-BD4BC9916EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6625AA1B-E14C-46AC-B659-BD4BC9916EA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{916C2DA0-7948-4595-BC12-A3C1330A2E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{916C2DA0-7948-4595-BC12-A3C1330A2E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{916C2DA0-7948-4595-BC12-A3C1330A2E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{916C2DA0-7948-4595-BC12-A3C1330A2E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3510CC06-C50E-4C9B-BCAB-8F774CFC8B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3510CC06-C50E-4C9B-BCAB-8F774CFC8B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3510CC06-C50E-4C9B-BCAB-8F774CFC8B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3510CC06-C50E-4C9B-BCAB-8F774CFC8B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,7 +37,7 @@ namespace Auth.Controllers
             }
             catch (Exception e) 
             {
-                var errorResponse = new { Message = $"Erro: {e.Message}" };
+                var errorResponse = new { Message = $"{e.Message}" };
                 return StatusCode(500, errorResponse);
             }
         }

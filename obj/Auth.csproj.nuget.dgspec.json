@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alex-\\source\\repos\\Auth\\Auth.csproj": {}
+    "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\Auth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alex-\\source\\repos\\Auth\\Auth.csproj": {
+    "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\Auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alex-\\source\\repos\\Auth\\Auth.csproj",
+        "projectUniqueName": "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\Auth.csproj",
         "projectName": "Auth",
-        "projectPath": "C:\\Users\\alex-\\source\\repos\\Auth\\Auth.csproj",
+        "projectPath": "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\Auth.csproj",
         "packagesPath": "C:\\Users\\alex-\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alex-\\source\\repos\\Auth\\obj\\",
+        "outputPath": "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alex-\\AppData\\Roaming\\NuGet\\NuGet.Config",

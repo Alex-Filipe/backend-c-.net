@@ -87,6 +87,10 @@ namespace Auth.Services
                     { "Message", "Senha resetada com sucesso" }
                 };
             }
+            // catch (ArgumentException)
+            // {
+            //     throw;
+            // }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
