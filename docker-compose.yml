@@ -1,0 +1,33 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  db:
+    hostname: mysql
+    container_name: mysql_agenda #Nome do container
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: agenda
+    ports:
+      - 3306:3306  
+
+  backend:
+    hostname: backend_agenda
+    container_name: backend_agenda #Nome do container
+    build:
+      context: .
+    restart: always
+    ports:
+      - 8000:5086
+    depends_on:
+      - db
+
+  frontend:
+    hostname: frontend_agenda
+    container_name: frontend_agenda #Nome do container
+    image: frontend
+    restart: always
+    ports:
+      - 3000:3000
