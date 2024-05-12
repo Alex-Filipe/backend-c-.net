@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DXOCpiVldYU0ZUPjoNc+YiPaPpDW4SZYXpiadUiPhE2KUw1k7aKapE4kg9jUNBzUppyjOjPoQ8bykTJNJAYZMw==",
+  "dgSpecHash": "l+PfjMnri3T5QoPHI9J6+MYvkzkaPMNbM241D31MJyFKu0wz0YDEYjYLP+sAQfmrNtRxSJ1847AxeK0vQCnWrA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alex-\\source\\repos\\backend-c-.net\\Auth.csproj",
+  "projectFilePath": "C:\\Users\\alex-\\source\\repos\\backend-dotnet\\Auth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alex-\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\alex-\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",

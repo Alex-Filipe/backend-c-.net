@@ -1,3 +1,4 @@
+using Auth.Dtos;
 using Auth.Models;
 
 namespace Auth.Interfaces
@@ -6,9 +7,13 @@ namespace Auth.Interfaces
     {
         User? GetUserByEmail(string email);
 
+        List<UserDto> GetAllUsers();
+
         void CreateUser(User newUser);
 
-        void UpdateUser(UpdateUserRequest updatedUser);
+        void UpdateUser(UpdateUserDto updatedUser);
+        
+        void DeleteUser(int id);
 
         User? GetUserById(int id);
 

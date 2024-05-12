@@ -1,4 +1,5 @@
-﻿using Auth.Interfaces;
+﻿using Auth.Dtos;
+using Auth.Interfaces;
 using Auth.Models;
 
 namespace Auth.Services
@@ -6,6 +7,18 @@ namespace Auth.Services
     public class UserService(IUserRepository userRepository)
     {
         private readonly IUserRepository _userRepository = userRepository;
+
+        public List<UserDto> GetAllUsers()
+        {
+            try
+            {
+                return _userRepository.GetAllUsers();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
         public void CreateUser(User user)
         {
@@ -37,12 +50,24 @@ namespace Auth.Services
             }
         }
 
-        public void UpdateUser(UpdateUserRequest updatedUser)
+        public void UpdateUser(UpdateUserDto updatedUser)
         {
             try
             {
                 ValidateEmailExist(updatedUser.Email, updatedUser.Id);
                 _userRepository.UpdateUser(updatedUser);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+         public void DeleteUser(int id)
+        {
+            try
+            {
+                _userRepository.DeleteUser(id);
             }
             catch (Exception e)
             {

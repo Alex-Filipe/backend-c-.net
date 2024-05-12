@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Auth.Database;
 
-namespace Auth.Models
+namespace Auth.Dtos
 {
-    public class UpdateUserRequest
+    public class UpdateUserDto
     {
         public int Id { get; set; }
 
