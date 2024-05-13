@@ -1,4 +1,5 @@
 ﻿
+using Auth.Dtos;
 using Auth.Models;
 using Auth.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace Auth.Controllers
         private readonly UserService _userService = userService;
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] Login autenticacao)
+        public IActionResult Login([FromBody] LoginDto autenticacao)
         {
             try 
             {
@@ -28,7 +29,7 @@ namespace Auth.Controllers
         }
 
         [HttpPost("reset-password")]
-        public IActionResult UpdateForgotPassword([FromBody] ForgotPassword forgotPasswordRequest)
+        public IActionResult UpdateForgotPassword([FromBody] UpdatePasswordUserDto forgotPasswordRequest)
         {
             try 
             {

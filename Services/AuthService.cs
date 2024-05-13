@@ -1,4 +1,5 @@
-﻿using Auth.Interfaces;
+﻿using Auth.Dtos;
+using Auth.Interfaces;
 using Auth.Models;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.IdentityModel.Tokens;
@@ -15,7 +16,7 @@ namespace Auth.Services
 
         private readonly IUserRepository _userRepository = userRepository;
 
-        public object Autenticar(Login autenticacao)
+        public object Autenticar(LoginDto autenticacao)
         {
             try
             {

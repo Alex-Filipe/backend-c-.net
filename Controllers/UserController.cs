@@ -29,7 +29,7 @@ namespace Auth.Controllers
         }
 
         [HttpPost("new_user")]
-        public IActionResult CreateUser([FromBody] User user)
+        public IActionResult CreateUser([FromBody] CreateUserDto user)
         {
             try
             {

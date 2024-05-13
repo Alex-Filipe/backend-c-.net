@@ -20,7 +20,7 @@ namespace Auth.Services
             }
         }
 
-        public void CreateUser(User user)
+        public void CreateUser(CreateUserDto user)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Auth.Services
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
                 // Crie um novo objeto User com os dados fornecidos
-                User newUser = new()
+                CreateUserDto newUser = new()
                 {
                     Name = user.Name,
                     Email = user.Email,
@@ -93,15 +93,10 @@ namespace Auth.Services
         }
 
 
-        public object UpdateForgotPassword(ForgotPassword forgotPasswordRequest)
+        public object UpdateForgotPassword(UpdatePasswordUserDto forgotPasswordRequest)
         {
             try
             {
-                if (forgotPasswordRequest.Password != forgotPasswordRequest.ConfirmPassword)
-                {
-                    throw new ArgumentException("As senhas não são iguais");
-                }
-
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(forgotPasswordRequest.ConfirmPassword);
 
                 _userRepository.UpdateUserPassword(forgotPasswordRequest.Email, hashedPassword);
@@ -112,10 +107,6 @@ namespace Auth.Services
                     { "Message", "Senha resetada com sucesso" }
                 };
             }
-            // catch (ArgumentException)
-            // {
-            //     throw;
-            // }
             catch (Exception e)
             {
                 throw new Exception(e.Message);

@@ -9,13 +9,11 @@ namespace Auth.Interfaces
 
         List<UserDto> GetAllUsers();
 
-        void CreateUser(User newUser);
+        void CreateUser(CreateUserDto newUser);
 
         void UpdateUser(UpdateUserDto updatedUser);
         
         void DeleteUser(int id);
-
-        User? GetUserById(int id);
 
         void UpdateUserPassword(string email, string newPassword);
     }

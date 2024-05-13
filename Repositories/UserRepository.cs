@@ -16,7 +16,6 @@ namespace Auth.Repositories
 
         public List<UserDto> GetAllUsers()
         {
-            // Projeção para selecionar apenas os campos desejados da entidade User
             return _context.Users
                            .Select(u => new UserDto
                            {
@@ -24,11 +23,20 @@ namespace Auth.Repositories
                                Name = u.Name,
                                Email = u.Email
                            })
+                           .OrderBy(u => u.Name)
                            .ToList();
         }
-        public void CreateUser(User newUser)
+        
+        public void CreateUser(CreateUserDto newUser)
         {
-            _context.Users.Add(newUser);
+            var user = new User
+            {
+                Name = newUser.Name,
+                Email = newUser.Email,
+                Password = newUser.Password
+            };
+
+            _context.Users.Add(user);
             _context.SaveChanges();
         }
 
@@ -43,21 +51,10 @@ namespace Auth.Repositories
 
         public void DeleteUser(int id)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Id == id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
-            }
-            else
-            {
-                throw new ArgumentException("Usuário não encontrado");
-            }
-        }
+            var user = _context.Users.FirstOrDefault(u => u.Id == id) ?? throw new ArgumentException("Usuário não encontrado"); ;
 
-        public User? GetUserById(int id)
-        {
-            return _context.Users.FirstOrDefault(u => u.Id == id);
+            _context.Users.Remove(user);
+            _context.SaveChanges();
         }
 
         public void UpdateUserPassword(string email, string newPassword)
