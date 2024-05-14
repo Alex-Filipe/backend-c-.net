@@ -7,7 +7,7 @@ namespace Auth.Interfaces
     {
         User? GetUserByEmail(string email);
 
-        List<UserDto> GetAllUsers();
+        List<AllUserDto> GetAllUsers();
 
         void CreateUser(CreateUserDto newUser);
 

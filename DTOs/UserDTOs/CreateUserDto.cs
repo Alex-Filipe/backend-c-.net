@@ -20,5 +20,9 @@ namespace Auth.Dtos
         [Required(ErrorMessage = "O campo senha é obrigatório.")]
         [StringLength(255, ErrorMessage = "O campo Senha não pode ter mais do que 255 caracteres.")]
         public required string Password { get; set; }
+
+        [Column("id_role")]
+        [Required(ErrorMessage = "O campo role é obrigatório.")]
+        public required int Id_role { get; set; }
     }
 }

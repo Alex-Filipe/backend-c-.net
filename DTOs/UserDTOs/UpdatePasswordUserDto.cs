@@ -7,7 +7,7 @@ namespace Auth.Dtos
     {
         [Required(ErrorMessage = "O campo email é obrigatório.")]
         public required string Email { get; set; }
-        
+
         [Required(ErrorMessage = "O campo senha é obrigatório.")]
         [StringLength(255, ErrorMessage = "O campo senha não pode ter mais do que 255 caracteres.")]
         public required string Password { get; set; }

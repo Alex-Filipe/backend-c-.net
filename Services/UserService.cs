@@ -8,7 +8,7 @@ namespace Auth.Services
     {
         private readonly IUserRepository _userRepository = userRepository;
 
-        public List<UserDto> GetAllUsers()
+        public List<AllUserDto> GetAllUsers()
         {
             try
             {
@@ -38,7 +38,8 @@ namespace Auth.Services
                 {
                     Name = user.Name,
                     Email = user.Email,
-                    Password = hashedPassword
+                    Password = hashedPassword,
+                    Id_role = user.Id_role
                 };
 
                 // Chame o método CreateUser no repositório para persistir o novo usuário

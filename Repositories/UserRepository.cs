@@ -14,26 +14,31 @@ namespace Auth.Repositories
             return _context.Users.FirstOrDefault(u => u.Email == email);
         }
 
-        public List<UserDto> GetAllUsers()
+        public List<AllUserDto> GetAllUsers()
         {
-            return _context.Users
-                           .Select(u => new UserDto
-                           {
-                               Id = u.Id,
-                               Name = u.Name,
-                               Email = u.Email
-                           })
-                           .OrderBy(u => u.Name)
-                           .ToList();
+            return [.. _context.Users
+                           .Join(_context.Roles, // Join com a tabela Role
+                                 user => user.Id_role, // Chave estrangeira User
+                                 role => role.Id, // Chave primária Role
+                                 (user, role) => new AllUserDto
+                                 {
+                                     Id = user.Id,
+                                     Name = user.Name,
+                                     Email = user.Email,
+                                     Id_role = user.Id_role,
+                                     Name_role = role.Name
+                                 })
+                           .OrderBy(u => u.Name)];
         }
-        
+
         public void CreateUser(CreateUserDto newUser)
         {
             var user = new User
             {
                 Name = newUser.Name,
                 Email = newUser.Email,
-                Password = newUser.Password
+                Password = newUser.Password,
+                Id_role = newUser.Id_role
             };
 
             _context.Users.Add(user);
@@ -46,6 +51,10 @@ namespace Auth.Repositories
 
             user.Name = updatedUser.Name ?? user.Name;
             user.Email = updatedUser.Email ?? user.Email;
+            if (updatedUser.Id_role != 0)
+            {
+                user.Id_role = updatedUser.Id_role;
+            }
             _context.SaveChanges();
         }
 
