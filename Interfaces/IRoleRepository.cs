@@ -7,5 +7,6 @@ namespace Auth.Interfaces
     {
         void CreateRole(CreateRoleDto newRole);
         Role? GetRoleByName(string roleName);
+        Role? GetRoleById(int roleId);
     }
 }

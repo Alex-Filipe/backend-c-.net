@@ -26,5 +26,19 @@ namespace Auth.Controllers
                 return StatusCode(500, new { Message = $"Erro: {e.Message}" });
             }
         }
+
+        [HttpGet("view_role/{id}")]
+        public IActionResult ShowRole(int id)
+        {
+            try
+            {
+                var role = _roleService.ShowRole(id);
+                return Ok(role);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { Message = $"Erro: {e.Message}" });
+            }
+        }
     }
 }

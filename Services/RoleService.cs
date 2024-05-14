@@ -31,5 +31,18 @@ namespace Auth.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public Role ShowRole(int roleId)
+        {
+            try
+            {
+                var role = _roleRepository.GetRoleById(roleId) ?? throw new Exception("Role não encontrada.");
+                return role;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

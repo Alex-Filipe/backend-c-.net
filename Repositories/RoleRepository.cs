@@ -14,6 +14,11 @@ namespace Auth.Repositories
             return _context.Roles.FirstOrDefault(role => role.Name == roleName);
         }
 
+        public Role? GetRoleById(int roleId)
+        {
+            return _context.Roles.FirstOrDefault(role => role.Id == roleId);
+        }
+
         public void CreateRole(CreateRoleDto newRole)
         {
             var role = new Role
