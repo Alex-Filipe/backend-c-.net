@@ -4,24 +4,27 @@ using Microsoft.EntityFrameworkCore;
 namespace Auth.Database;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-
     // Adciona automatico no created_at e updated_at
     private void AddTimestamps()
     {
         var entities = ChangeTracker.Entries()
             .Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
+        var now = DateTime.UtcNow;
+
         foreach (var entity in entities)
         {
-            var now = DateTime.UtcNow;
-
             if (entity.State == EntityState.Added)
             {
                 ((BaseEntity)entity.Entity).Created_at = now;
             }
-            ((BaseEntity)entity.Entity).Updated_at = now;
+            else if (entity.State == EntityState.Modified)
+            {
+                ((BaseEntity)entity.Entity).Updated_at = now;
+            }
         }
     }
+
     public override int SaveChanges()
     {
         AddTimestamps();

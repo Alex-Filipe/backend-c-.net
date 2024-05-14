@@ -26,7 +26,9 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<RoleService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 //Configura��o Banco
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
