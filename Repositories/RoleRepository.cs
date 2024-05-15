@@ -29,5 +29,13 @@ namespace Auth.Repositories
             _context.Roles.Add(role);
             _context.SaveChanges();
         }
+
+        public void UpdateRole(UpdateRoleDto updatedRole)
+        {
+                var role = _context.Roles.FirstOrDefault(role => role.Id == updatedRole.Id) ?? throw new Exception("Perfil não encontrado.");
+                role.Name = updatedRole.Name;
+
+                _context.SaveChanges();
+        }
     }
 }

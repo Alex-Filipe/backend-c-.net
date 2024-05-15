@@ -40,5 +40,20 @@ namespace Auth.Controllers
                 return StatusCode(500, new { Message = $"Erro: {e.Message}" });
             }
         }
+
+        [HttpPut("update_role/{id}")]
+        public IActionResult UpdateUser(int id, [FromBody] UpdateRoleDto updatedRole)
+        {
+            try
+            {
+                updatedRole.Id = id; 
+                _roleService.UpdateRole(updatedRole);
+                return Ok(new { Message = "Perfíl atualizado com sucesso" });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { Message = $"Erro: {e.Message}" });
+            }
+        }
     }
 }

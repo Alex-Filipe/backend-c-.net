@@ -13,10 +13,9 @@ namespace Auth.Services
         {
             try
             {
-                // Verifique se já existe um perfil com este nome
                 if (_roleRepository.GetRoleByName(role.Name) != null)
                 {
-                    throw new ArgumentException("Já existe um perfil com este nome.");
+                    throw new Exception("Já existe um perfil com este nome.");
                 }
 
                 CreateRoleDto newRole = new()
@@ -36,8 +35,20 @@ namespace Auth.Services
         {
             try
             {
-                var role = _roleRepository.GetRoleById(roleId) ?? throw new Exception("Role não encontrada.");
+                var role = _roleRepository.GetRoleById(roleId)  ?? throw new Exception("Perfil não encontrado.");
                 return role;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void UpdateRole(UpdateRoleDto updatedRole)
+        {
+            try
+            {
+                _roleRepository.UpdateRole(updatedRole);
             }
             catch (Exception e)
             {
