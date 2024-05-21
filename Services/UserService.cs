@@ -1,6 +1,9 @@
 ﻿using Auth.Dtos;
 using Auth.Interfaces;
-using Auth.Models;
+using RabbitMQ.Client;
+using System;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Auth.Services
 {
@@ -20,7 +23,7 @@ namespace Auth.Services
             }
         }
 
-        public void CreateUser(CreateUserDto user)
+        public void CreateUserr(CreateUserDto user)
         {
             try
             {
@@ -44,6 +47,40 @@ namespace Auth.Services
 
                 // Chame o método CreateUser no repositório para persistir o novo usuário
                 _userRepository.CreateUser(newUser);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void CreateUser(CreateUserDto user, IModel channel)
+        {
+            try
+            {
+                // Verifique se já existe um usuário com o mesmo e-mail
+                if (_userRepository.GetUserByEmail(user.Email) != null)
+                {
+                    throw new ArgumentException("Já existe um usuário com esse e-mail.");
+                }
+
+                // Hash da senha antes de armazená-la
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+                // Crie um novo objeto User com os dados fornecidos
+                var createUserMessage = new CreateUserDto
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = hashedPassword,
+                    Id_role = user.Id_role
+                };
+
+                // Serializa a mensagem para JSON
+                var messageBody = JsonConvert.SerializeObject(createUserMessage);
+                
+                // Publica a mensagem na fila
+                channel.BasicPublish(exchange: "", routingKey: "createUserQueue", basicProperties: null, body: Encoding.UTF8.GetBytes(messageBody));
             }
             catch (Exception e)
             {
